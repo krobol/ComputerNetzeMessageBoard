@@ -115,16 +115,6 @@
             this.listMessage.Size = new System.Drawing.Size(534, 251);
             this.listMessage.TabIndex = 3;
             // 
-            // ButtonStart
-            // 
-            this.ButtonStart.Location = new System.Drawing.Point(652, 63);
-            this.ButtonStart.Name = "ButtonStart";
-            this.ButtonStart.Size = new System.Drawing.Size(75, 23);
-            this.ButtonStart.TabIndex = 4;
-            this.ButtonStart.Text = "Start";
-            this.ButtonStart.UseVisualStyleBackColor = true;
-            this.ButtonStart.Click += new System.EventHandler(this.ButtonStart_Click);
-            // 
             // ButtonSend
             // 
             this.ButtonSend.Location = new System.Drawing.Point(652, 125);
