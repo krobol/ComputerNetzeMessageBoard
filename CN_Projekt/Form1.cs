@@ -22,12 +22,15 @@ namespace CN_Projekt
         {
             InitializeComponent();
 
-            sck = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            sck = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             sck.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
 
 
             textLocalIP.Text = GetLocalIP();
-            textFriendsIP.Text = GetLocalIP();
+            textLocalIP.ReadOnly = true;
+            textFriendsIP.Text = "185.17.144.10";
+            textLocalPort.Text = "80";
+            textFriendsPort.Text = "8080";
 
         }
 
@@ -62,7 +65,9 @@ namespace CN_Projekt
 
                     ASCIIEncoding eEncoding = new ASCIIEncoding();
                     string receivedMessage = eEncoding.GetString(receivedData);
-                    listMessage.Items.Add("Friend: " + receivedMessage);
+                    //listMessage.Items.Add("Friend: " + receivedMessage);
+                    Console.WriteLine("\n " + receivedMessage + "\n");
+
 
                 }
 
@@ -83,19 +88,21 @@ namespace CN_Projekt
         {
             try
             {
-                epLocal = new IPEndPoint(IPAddress.Parse(textLocalIP.Text), Convert.ToInt32(textLocalPort.Text));
-                sck.Bind(epLocal);
 
-                epRemote = new IPEndPoint(IPAddress.Parse(textFriendsIP.Text), Convert.ToInt32(textFriendsPort.Text));
-                sck.Connect(epRemote);
+                
+                  epLocal = new IPEndPoint(IPAddress.Parse(textLocalIP.Text), Convert.ToInt32(textLocalPort.Text));
+                  sck.Bind(epLocal);
 
-                byte[] buffer = new byte[1500];
-                sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+                  epRemote = new IPEndPoint(IPAddress.Parse(textFriendsIP.Text), Convert.ToInt32(textFriendsPort.Text));
+                  sck.Connect(epRemote);
 
-                ButtonStart.Text = "Connected";
-                ButtonStart.Enabled = false;
-                ButtonSend.Enabled = true;
-                textMessage.Focus();
+                  byte[] buffer = new byte[1500];
+                  sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+
+                  ButtonStart.Text = "Connected";
+                  ButtonStart.Enabled = false;
+                  ButtonSend.Enabled = true;
+                  textMessage.Focus();
 
             }
             catch (Exception ex) {
@@ -106,24 +113,25 @@ namespace CN_Projekt
         private void ButtonSend_Click(object sender, EventArgs e)
         {
 
-            try
-            {
-                System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
-                byte[] msg = new byte[1500];
-                msg = enc.GetBytes(textMessage.Text);
+            string Get = "GET / HTTP/1.1\r\nHost: " + "185.17.144.10" +
+                 "\r\nConnection: Close\r\n\r\n";
 
-                sck.Send(msg);
+                try
+                {
+                    System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
+                    byte[] msg = new byte[1500];
+                    msg = enc.GetBytes(Get);
 
-                listMessage.Items.Add("Me: " + textMessage.Text);
-                textMessage.Clear();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
+                    sck.Send(msg);
 
-            }
+                    // listMessage.Items.Add("Me: " + textMessage.Text);
+                    //textMessage.Clear();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
 
-
+                }
         }
     }
 }

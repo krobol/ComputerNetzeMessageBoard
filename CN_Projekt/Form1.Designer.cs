@@ -57,7 +57,7 @@
             this.localgroupBox.Size = new System.Drawing.Size(212, 100);
             this.localgroupBox.TabIndex = 0;
             this.localgroupBox.TabStop = false;
-            this.localgroupBox.Text = "Client1";
+            this.localgroupBox.Text = "Client Info";
             // 
             // FriendsgroupBox
             // 
@@ -70,7 +70,7 @@
             this.FriendsgroupBox.Size = new System.Drawing.Size(200, 100);
             this.FriendsgroupBox.TabIndex = 1;
             this.FriendsgroupBox.TabStop = false;
-            this.FriendsgroupBox.Text = "Client2";
+            this.FriendsgroupBox.Text = "Server Info";
             // 
             // textLocalIP
             // 
