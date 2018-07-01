@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.localgroupBox = new System.Windows.Forms.GroupBox();
+            //this.localgroupBox = new System.Windows.Forms.GroupBox();
             this.FriendsgroupBox = new System.Windows.Forms.GroupBox();
-            this.textLocalIP = new System.Windows.Forms.TextBox();
-            this.textLocalPort = new System.Windows.Forms.TextBox();
+           // this.textLocalIP = new System.Windows.Forms.TextBox();
+            //this.textLocalPort = new System.Windows.Forms.TextBox();
             this.textFriendsIP = new System.Windows.Forms.TextBox();
             this.textFriendsPort = new System.Windows.Forms.TextBox();
             this.textMessage = new System.Windows.Forms.TextBox();
             this.listMessage = new System.Windows.Forms.ListBox();
-            this.ButtonStart = new System.Windows.Forms.Button();
+           // this.ButtonStart = new System.Windows.Forms.Button();
             this.ButtonSend = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            //this.label1 = new System.Windows.Forms.Label();
+            //this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.localgroupBox.SuspendLayout();
+            //this.localgroupBox.SuspendLayout();
             this.FriendsgroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // localgroupBox
             // 
-            this.localgroupBox.Controls.Add(this.label2);
+          /*  this.localgroupBox.Controls.Add(this.label2);
             this.localgroupBox.Controls.Add(this.label1);
             this.localgroupBox.Controls.Add(this.textLocalPort);
             this.localgroupBox.Controls.Add(this.textLocalIP);
@@ -57,7 +57,7 @@
             this.localgroupBox.Size = new System.Drawing.Size(212, 100);
             this.localgroupBox.TabIndex = 0;
             this.localgroupBox.TabStop = false;
-            this.localgroupBox.Text = "Client Info";
+            this.localgroupBox.Text = "Client Info";*/
             // 
             // FriendsgroupBox
             // 
@@ -65,26 +65,26 @@
             this.FriendsgroupBox.Controls.Add(this.label3);
             this.FriendsgroupBox.Controls.Add(this.textFriendsPort);
             this.FriendsgroupBox.Controls.Add(this.textFriendsIP);
-            this.FriendsgroupBox.Location = new System.Drawing.Point(352, 48);
+            this.FriendsgroupBox.Location = new System.Drawing.Point(12, 48);
             this.FriendsgroupBox.Name = "FriendsgroupBox";
-            this.FriendsgroupBox.Size = new System.Drawing.Size(200, 100);
+            this.FriendsgroupBox.Size = new System.Drawing.Size(212, 100);
             this.FriendsgroupBox.TabIndex = 1;
             this.FriendsgroupBox.TabStop = false;
             this.FriendsgroupBox.Text = "Server Info";
             // 
             // textLocalIP
             // 
-            this.textLocalIP.Location = new System.Drawing.Point(94, 19);
+           /* this.textLocalIP.Location = new System.Drawing.Point(94, 19);
             this.textLocalIP.Name = "textLocalIP";
             this.textLocalIP.Size = new System.Drawing.Size(100, 20);
-            this.textLocalIP.TabIndex = 0;
+            this.textLocalIP.TabIndex = 0;*/
             // 
             // textLocalPort
             // 
-            this.textLocalPort.Location = new System.Drawing.Point(94, 45);
+            /*this.textLocalPort.Location = new System.Drawing.Point(94, 45);
             this.textLocalPort.Name = "textLocalPort";
             this.textLocalPort.Size = new System.Drawing.Size(100, 20);
-            this.textLocalPort.TabIndex = 1;
+            this.textLocalPort.TabIndex = 1;*/
             // 
             // textFriendsIP
             // 
@@ -127,7 +127,7 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
+           /* this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(7, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 13);
@@ -141,7 +141,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "PORT";
+            this.label2.Text = "PORT";*/
             // 
             // label3
             // 
@@ -167,15 +167,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.ButtonSend);
-            this.Controls.Add(this.ButtonStart);
+            //this.Controls.Add(this.ButtonStart);
             this.Controls.Add(this.listMessage);
             this.Controls.Add(this.textMessage);
             this.Controls.Add(this.FriendsgroupBox);
-            this.Controls.Add(this.localgroupBox);
+            //this.Controls.Add(this.localgroupBox);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.localgroupBox.ResumeLayout(false);
-            this.localgroupBox.PerformLayout();
+            //this.localgroupBox.ResumeLayout(false);
+            //this.localgroupBox.PerformLayout();
             this.FriendsgroupBox.ResumeLayout(false);
             this.FriendsgroupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -185,11 +185,11 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox localgroupBox;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textLocalPort;
-        private System.Windows.Forms.TextBox textLocalIP;
+        //private System.Windows.Forms.GroupBox localgroupBox;
+       // private System.Windows.Forms.Label label2;
+        //private System.Windows.Forms.Label label1;
+        //private System.Windows.Forms.TextBox textLocalPort;
+        //private System.Windows.Forms.TextBox textLocalIP;
         private System.Windows.Forms.GroupBox FriendsgroupBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -197,7 +197,7 @@
         private System.Windows.Forms.TextBox textFriendsIP;
         private System.Windows.Forms.TextBox textMessage;
         private System.Windows.Forms.ListBox listMessage;
-        private System.Windows.Forms.Button ButtonStart;
+        //private System.Windows.Forms.Button ButtonStart;
         private System.Windows.Forms.Button ButtonSend;
     }
 }

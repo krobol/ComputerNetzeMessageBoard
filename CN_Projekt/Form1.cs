@@ -41,11 +41,11 @@ namespace CN_Projekt
 
             client = new HttpClient();
 
-            textLocalIP.Text = GetLocalIP();
-            textLocalIP.ReadOnly = true;
+            //textLocalIP.Text = GetLocalIP();
+            //textLocalIP.ReadOnly = true;
             textFriendsIP.Text = "185.17.144.10";
-            textLocalPort.Text = "80";
-            textFriendsPort.Text = "8080";
+            //textLocalPort.Text = "80";
+            textFriendsPort.Text = "80";
 
             //refresh messages every second
             System.Timers.Timer timer = new System.Timers.Timer();
@@ -79,9 +79,12 @@ namespace CN_Projekt
                 { "text", textMessage.Text },
             };
             var content = new FormUrlEncodedContent(values);
-            var response = await client.PostAsync("http://" + textFriendsIP.Text + "/comment/saveComment", content);
+            var response = await client.PostAsync("http://" + textFriendsIP.Text + ":" + textFriendsPort.Text + "/comment/saveComment", content);
 
             var responseString = await response.Content.ReadAsStringAsync();
+
+            textMessage.Text = "";
+
         }
 
         private void refreshMessageBoard(object sender, EventArgs e)
@@ -93,19 +96,27 @@ namespace CN_Projekt
 
         private async void _refreshMessageBoard()
         {
-            var responseString = await client.GetStringAsync("http://" + textFriendsIP.Text + "/messageBoard/getMessages");
-
-            if (responseString == messages)
-                return;
-
-            messages = responseString;
-            var list = JsonConvert.DeserializeObject<List<Message>>(responseString);
-            listMessage.Items.Clear();
-            foreach (var message in list)
+            try
             {
-               listMessage.Items.Add("Friend: " + message.text);
-            }
+                var responseString = await client.GetStringAsync("http://" + textFriendsIP.Text + ":" + textFriendsPort.Text + "/messageBoard/getMessages");
 
+                if (responseString == messages)
+                    return;
+                messages = responseString;
+
+                var list = JsonConvert.DeserializeObject<List<Message>>(responseString);
+                listMessage.Items.Clear();
+                foreach (var message in list)
+                {
+                    listMessage.Items.Add("Friend: " + message.text);
+                }
+            }
+            catch(HttpRequestException e)
+            {
+                messages = e.Message;
+                listMessage.Items.Clear();
+                listMessage.Items.Add(e.Message);
+            }
         }
     }
 }
